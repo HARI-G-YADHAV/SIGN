@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up / Sign In</title>
+  <link rel="stylesheet" href="sign.css">
+</head>
+<body >
+    <div class="container">
+        <div id="signupForm" style="display: none;">
+            <h1>SIGN UP</h1>
+            <input type="text" id="username" placeholder="Username">
+            <input type="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <input type="password" placeholder="Repeat Password">
+            <button onclick="signUp()">Sign Up</button>
+            <p>Already have an account? <a href="#" onclick="toggleForm()"> <mark><b>Sign In</b></mark></a></p>
+        </div>
+        <div id="signinForm" >
+            <h1>SIGN IN</h1>
+            <input type="text" placeholder="Username">
+            <input type="password" placeholder="Password">
+            <button onclick="signIn()">Sign In</button>
+            <p>Don't have an account? <a href="#" onclick="toggleForm()"><mark><b>Sign Up</b></mark></a></p>
+        </div>
+        </div>
+    <script src="sign.js"></script>
+</body>
+</html>
