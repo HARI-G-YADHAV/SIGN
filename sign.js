@@ -17,7 +17,7 @@ function signIn() {
 }
 
 function signUp() {
-cd
+
   signinForm.style.display = "block";
   signupForm.style.display = "none";
 }
