@@ -11,7 +11,7 @@
         <div id="signupForm" style="display: none;">
             <h1>SIGN UP</h1>
             <input type="text" id="username" placeholder="Username">
-            <input type="email" placeholder="Email">
+            <input type="email" id="email" placeholder="Email">
             <input type="password" id="password" placeholder="Password">
             <input type="password" placeholder="Repeat Password">
             <button onclick="signUp()">Sign Up</button>
@@ -19,12 +19,13 @@
         </div>
         <div id="signinForm" >
             <h1>SIGN IN</h1>
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
+            <input type="text" placeholder="Username" id="Username">
+            <input type="password" placeholder="Password" id="Password">
             <button onclick="signIn()">Sign In</button>
             <p>Don't have an account? <a href="#" onclick="toggleForm()"><mark><b>Sign Up</b></mark></a></p>
         </div>
-        </div>
+    </div>
+    <div id="messagePlaceholder" class="message" align="center"></div>
     <script src="sign.js"></script>
 </body>
 </html>

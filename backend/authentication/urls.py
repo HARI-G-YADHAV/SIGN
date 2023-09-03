@@ -1,7 +1,10 @@
 # authentication/urls.py
 
-from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
 from . import views
+from .views import sign_up, sign_in
+
 
 urlpatterns = [
     path('sign-up/', views.sign_up, name='sign-up'),

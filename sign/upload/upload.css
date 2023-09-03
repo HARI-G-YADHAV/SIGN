@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+#csvTable {
+    margin-top: 20px;
+    border: 1px solid #333;
+    padding: 10px;
+    overflow-x: auto;
+}
+#csvFileInput {
+    font-size: 16px;
+    padding: 10px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: border-color 0.3s ease-in-out;
+}
+
+
+#csvFileInput:hover {
+    border-color: #2980b9;
+}
+
+
+#csvFileInput:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
+}
+
+
+.button {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 10px 50px; 
+    font-size: 20px;
+    font-weight: bold; 
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #333; 
+    border-radius: 5px;
+    background-color: #007bff; 
+    color: #fff; 
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #0056b3; 
+    border-color: #0056b3; 
+    color: #fff; 
+  }
+  
