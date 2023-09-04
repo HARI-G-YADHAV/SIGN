@@ -59,6 +59,10 @@ function uploadCsv() {
             // Handle the response from the server (e.g., display a success message)
             console.log(data.message);
             // You can redirect the user to a success page if needed
+            if (data.message === 'CSV file uploaded successfully') {
+                // Redirect to the dashboard page
+                window.open('upload_complete.html', '_self');
+            }
         })
         .catch(error => {
             console.error('Error:', error);
