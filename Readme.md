@@ -7,7 +7,7 @@ An web app which will arrange the seating for exam
 ## Authors
 
 - [@HARI-G-YADHAV](https://www.github.com/HARI-G-YADHAV)
-- [@HARI-G-YADHAV](https://www.github.com/vishnuprakash-777)
+- [@vishnuprakash-777](https://www.github.com/vishnuprakash-777)
 
 
 
