@@ -1,0 +1,81 @@
+/* Reset some default styles to ensure consistency across browsers */
+body, h1, h2, form {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 200px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.4);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="file"] {
+    display: block;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    margin-top: 50px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+select {
+    padding: 5px;
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Style the options in the dropdown */
+select option {
+    padding: 5px;
+}
+
+/* Style the link */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Hover effect for the link */
+a:hover {
+    text-decoration: underline;
+}

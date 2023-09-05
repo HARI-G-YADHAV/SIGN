@@ -10,7 +10,7 @@ function toggleForm() {
       signinForm.style.display = "block";
     }
 }
-  
+const userToken = 'your-user-token-value'; 
 function signIn() {
   var username = document.getElementById('Username').value;
   var password = document.getElementById('Password').value;
@@ -25,7 +25,8 @@ function signIn() {
   fetch('http://localhost:8000//api/sign-in/', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${userToken}`,
     },
     body: JSON.stringify(jsonData)
   })
@@ -38,9 +39,10 @@ function signIn() {
       // Update the content of the placeholder element
       const messagePlaceholder = document.getElementById('messagePlaceholder');
       messagePlaceholder.textContent = message;
-      if (data.message1 === 'Sign-in successful') {
-        // Redirect to the dashboard page
-        window.open('upload/upload.html','_self');
+      if (data.token) {
+        window.location.href = 'option/option.html'; 
+      } else {
+        console.error('Authentication failed:', data);
       }
     })
     .catch(error => {

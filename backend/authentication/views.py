@@ -6,6 +6,9 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.db import IntegrityError
+from rest_framework.authtoken.models import Token
+from django.contrib.auth import authenticate, login
+
 
 User = get_user_model()
 
@@ -36,6 +39,7 @@ def sign_up(request):
     else:
         return JsonResponse({'error': 'Method not allowed'}, status=405)
 
+
 @csrf_exempt
 def sign_in(request):
     if request.method == 'POST':
@@ -49,13 +53,13 @@ def sign_in(request):
         if not username or not password:
             return JsonResponse({'message': 'Missing email or password'}, status=400)
 
-        user = User.objects.filter(username=username).first()
+        user = authenticate(username=username, password=password)
 
-        if not user or not user.check_password(password):
+        if user is not None:
+            login(request, user)
+            token, created = Token.objects.get_or_create(user=user)
+            return JsonResponse({'token': token.key, 'user_id': user.id, 'message': 'Sign-in successful'}, status=200)
+        else:
             return JsonResponse({'message': 'Invalid email or password'}, status=401)
-        message = 'Sign-in successful'
-
-        return JsonResponse({'message1': message, 'user_id': user.id}, status=200)
     else:
         return JsonResponse({'error': 'Method not allowed'}, status=405)
-
