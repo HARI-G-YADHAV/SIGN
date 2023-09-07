@@ -6,10 +6,16 @@
         <title>upload</title>
     </head>
     <body>
-        <h1>CSV File Upload and Display</h1>
-        <input type="file" id="csvFileInput" accept=".csv" >
-        <div id="csvTable"></div>
-        <button type="submit" class="button" onclick="uploadCsv()">Upload</button>
+        <div class="container1" align="right">
+            <button id="logout-button">Logout</button>
+        </div>
+        <div id="p1">
+            <h1>CSV File Upload and Display</h1>
+            <input type="file" id="csvFileInput" accept=".csv" >
+            <div id="csvTable"></div>
+            <button type="submit" class="button" onclick="uploadCsv()">Upload</button>
+        </div>
+        <script src="/sign/logout.js"></script>
         <script src="upload.js"></script>
     </body>
 </html>

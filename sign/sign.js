@@ -1,4 +1,4 @@
-function toggleForm() {
+function toggleForm(e) {
     var signupForm = document.getElementById("signupForm");
     var signinForm = document.getElementById("signinForm");
     
@@ -35,12 +35,13 @@ function signIn() {
       // Handle the response from the sign-in API
       console.log(data);
       const message = data.message;
-
+      localStorage.setItem("token", data.token);
       // Update the content of the placeholder element
       const messagePlaceholder = document.getElementById('messagePlaceholder');
       messagePlaceholder.textContent = message;
       if (data.token) {
-        window.location.href = 'option/option.html'; 
+        window.location.href = 'option/option.html';
+
       } else {
         console.error('Authentication failed:', data);
       }

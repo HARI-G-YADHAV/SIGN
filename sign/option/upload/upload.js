@@ -1,3 +1,19 @@
+const authToken = localStorage.getItem('token');
+
+// Check if the token exists
+if (authToken) {
+    // You can now use authToken for your authentication or other purposes
+    console.log('Token:', authToken);
+
+} 
+else {
+    console.log('Token not found in localStorage');
+    window.location.href="http://127.0.0.1:5500/sign/notfound.html";
+
+}
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const csvFileInput = document.getElementById("csvFileInput");
     const csvTable = document.getElementById("csvTable");
@@ -60,8 +76,7 @@ function uploadCsv() {
             console.log(data.message);
             // You can redirect the user to a success page if needed
             if (data.message === 'CSV file uploaded successfully') {
-                // Redirect to the dashboard page
-                window.open('upload_complete.html', '_self');
+                window.location.href="upload_complete.html"
             }
         })
         .catch(error => {
