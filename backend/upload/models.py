@@ -4,9 +4,9 @@ from django.db import models
 
 
 class UploadedCSV(models.Model):
-    file = models.FileField(upload_to='csv_files/')
-    uploaded_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=10)
+    RegNo = models.CharField(max_length=15)
 
     def __str__(self):
-        return self.file.name
+        return self.RegNo
     

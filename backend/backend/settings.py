@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'upload',
     'rest_framework',
     'rest_framework.authtoken',
+    'seating_arranger',
 
 ]
 REST_FRAMEWORK = {

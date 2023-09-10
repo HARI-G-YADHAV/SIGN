@@ -5,4 +5,4 @@ from .models import UploadedCSV
 
 admin.site.register(UploadedCSV)
 class UploadedCSVAdmin(admin.ModelAdmin):
-    list_display = ('file', 'uploaded_at')
+    list_display = (' status', 'RegNo')
