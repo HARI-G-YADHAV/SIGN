@@ -35,13 +35,21 @@ function signIn() {
       // Handle the response from the sign-in API
       console.log(data);
       const message = data.message;
+      const is_admin = data.is_admin;
       localStorage.setItem("token", data.token);
       // Update the content of the placeholder element
       const messagePlaceholder = document.getElementById('messagePlaceholder');
       messagePlaceholder.textContent = message;
       if (data.token) {
-        window.location.href = 'option/option.html';
-
+        if (is_admin) {
+          // Redirect admin to an admin-specific page
+          console.log('Redirecting to admin page');
+          window.location.href = 'option/option.html';
+        } else {
+          // Redirect regular users to a regular user page
+          console.log('Redirecting to regular user page');
+          window.location.href = 'option/seating_arranger/seating.html';
+        }
       } else {
         console.error('Authentication failed:', data);
       }

@@ -58,7 +58,8 @@ def sign_in(request):
         if user is not None:
             login(request, user)
             token, created = Token.objects.get_or_create(user=user)
-            return JsonResponse({'token': token.key, 'user_id': user.id, 'message': 'Sign-in successful'}, status=200)
+            is_admin = user.is_superuser
+            return JsonResponse({'token': token.key, 'user_id': user.id, 'message': 'Sign-in successful','is_admin': is_admin,}, status=200)
         else:
             return JsonResponse({'message': 'Invalid email or password'}, status=401)
     else:
