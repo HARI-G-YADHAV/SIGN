@@ -21,7 +21,7 @@ function removeTokenFromLocalStorage() {
   
       // Call the logout function to remove the token from local storage
       logout();
-      const newWindow = window.open('http://127.0.0.1:5500/sign/sign.html', '_self');
+      const newWindow = window.open('http://127.0.0.1:5501/sign/sign.html', '_self');
       newWindow.onload = function() {
         newWindow.location.reload();
       };

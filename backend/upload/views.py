@@ -32,7 +32,7 @@ def upload_csv(request):
 def handle_csv_file(csv_file):
     csv_data = csv_file.read().decode('utf-8')
     reader = csv.reader(io.StringIO(csv_data))
-
+    UploadedCSV.objects.all().delete()
     for row in reader:
         status = row[0]  # Assuming the status is in the first column
         reg_no = row[1]  # Assuming the RegNo is in the second column

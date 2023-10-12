@@ -48,7 +48,7 @@ function signIn() {
         } else {
           // Redirect regular users to a regular user page
           console.log('Redirecting to regular user page');
-          window.location.href = 'option/seating_arranger/seating.html';
+          window.location.href = 'option/seating_arranger/home.html';
         }
       } else {
         console.error('Authentication failed:', data);

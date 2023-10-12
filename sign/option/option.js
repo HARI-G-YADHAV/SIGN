@@ -5,7 +5,7 @@
 
 // Function to navigate to the seating arranger website
 document.getElementById("seatingArrangerButton").addEventListener("click", function() {
-    window.location.href = "seating_arranger/seating.html";
+    window.location.href = "seating_arranger/home.html";
 });
 
 // Get the token from localStorage

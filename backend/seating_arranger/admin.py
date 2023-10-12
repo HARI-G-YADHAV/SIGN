@@ -1,8 +1,10 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import classCSV
+from .models import RoomDetails
 
-admin.site.register(classCSV)
-class classCSV(admin.ModelAdmin):
-    list_display = ('row', 'column','name')
+admin.site.register(RoomDetails)
+class RoomDetails(admin.ModelAdmin):
+    list_display = ('rows', 'columns','roomno','noofbenches','benchstrength')
+
+

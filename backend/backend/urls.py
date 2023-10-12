@@ -16,12 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from django.urls import reverse
+
+
+app_name = 'seating_arranger'
 
 
 urlpatterns = [
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     path('api/', include('authentication.urls')),
-    path('api/',include('upload.urls'))
-
+    path('api/',include('upload.urls')),
+    path('api/',include('seating_arranger.urls')),
 ]

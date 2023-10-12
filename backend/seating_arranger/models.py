@@ -1,9 +1,13 @@
 from django.db import models
+from upload.models import UploadedCSV
 
 # Create your models here.
-class classCSV(models.Model):
-    row = models.CharField(max_length=10)
-    column = models.CharField(max_length=15)
-    name = models.CharField(max_length=15)
+class RoomDetails(models.Model):
+    roomno=models.IntegerField()
+    rows=models.IntegerField()
+    columns=models.IntegerField()
+    noofbenches=models.IntegerField()
+    benchstrength=models.IntegerField()
+
     def __str__(self):
-        return self.name
+        return f"{self.roomno}"
