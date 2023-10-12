@@ -235,28 +235,24 @@ def generate_seating_plan4(request):
             seatingPlan += ['XX' for _ in range(max_students - len(seatingPlan))]
 
             x, y, z = 1, number_of_row_in_room, number_of_col_in_room
-            arr = [seatingPlan[i:i + y] for i in range(0, len(seatingPlan), y)]  # Convert to a list of lists
+            arr = np.array(seatingPlan, dtype=str).reshape((x, y, z))
 
-            seating_arrangements[roomno] = arr
+            # Convert the NumPy array to a list
+            seating_plan_list = arr.tolist()
+
+            seating_arrangements[roomno] = seating_plan_list
 
         # Create an Excel file and write data
-        wb = Workbook()
-
-        for roomno, seating_plan in seating_arrangements.items():
-            ws = wb.create_sheet(title=f'Room {roomno}')
-
-            # Populate the worksheet with seating arrangements
-            for row_data in seating_plan:
-                ws.append(row_data)
-
-        # Remove the default empty sheet created by openpyxl
-        wb.remove(wb.active)
-
-        # Create an HTTP response with the Excel content
         response = HttpResponse(content_type='application/ms-excel')
         response['Content-Disposition'] = 'attachment; filename="seating_plan.xlsx"'
 
-        # Save the workbook to the response
+        wb = Workbook()
+        for roomno, seating_plan in seating_arrangements.items():
+            ws = wb.create_sheet(title=f'Room {roomno}')
+            for i in range(len(seating_plan)):
+                for j in range(len(seating_plan[i])):
+                    ws.append(seating_plan[i][j])
+
         wb.save(response)
 
         return response
