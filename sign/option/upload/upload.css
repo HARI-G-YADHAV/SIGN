@@ -1,86 +1,124 @@
+/* Reset some default styles and add a background color to the body */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 20px;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7; /* Light gray background */
 }
 
-h1 {
-    color: #333;
-}
+/* Header styles */
+.container1 {
 
-#csvTable {
-    margin-top: 20px;
-    border: 1px solid #333;
     padding: 10px;
-    overflow-x: auto;
+    color: white;
+    text-align: right;
 }
+
+#logout-button {
+    width: 150px;
+    height: 50px;
+    background-color: #1e8ddd; /* Logout button color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#logout-button:hover {
+    background-color: #e6462a; /* Change button color on hover */
+}
+
+/* Page title styles */
+h1 {
+    font-size: 36px;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* File input styles */
 #csvFileInput {
     font-size: 16px;
     padding: 10px;
-    border: 2px solid black;
+    border: 2px solid #007bff; /* Blue border color */
     border-radius: 5px;
     background-color: #f0f0f0;
     color: #333;
     transition: border-color 0.3s ease-in-out;
 }
 
-
 #csvFileInput:hover {
-    border-color: #2980b9;
+    border-color: #0056b3; /* Change border color on hover */
 }
-
 
 #csvFileInput:focus {
     outline: none;
-    border-color: #2980b9;
+    border-color: #0056b3; /* Change border color on focus */
     box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
 }
 
-
+/* "Upload" button styles */
 .button {
-    display: inline-block;
-    margin-top: 50px;
-    padding: 10px 50px; 
+    margin-top: 30px;
+    padding: 12px 40px;
     font-size: 20px;
-    font-weight: bold; 
+    font-weight: bold;
     text-align: center;
     text-decoration: none;
-    border: 1px solid #333; 
+    border: none;
     border-radius: 5px;
-    background-color: #007bff; 
-    color: #fff; 
+    background-color: #007bff;
+    color: white;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-  }
-  
-  .button:hover {
-    background-color: #0056b3; 
-    border-color: #0056b3; 
-    color: #fff; 
-  }
-  /* Add some basic styles to the button */
-.container {
-    text-align: center;
-    margin-top: 100px;
 }
 
-#logout-button {
-    position: static;
-    width: 150px;
-    height: 50px;
-    margin-right: 50px;
-    margin-top: 30px;
-    background-color: #429cd4; /* You can change the button color */
+.button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
     color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bolder;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
 }
 
-#logout-button:hover {
-    background-color: #e6462a; /* Change the button color on hover */
+/* Center the #csvTable and set the max-width for the entire table */
+#csvTable {
+    margin: 20px auto; /* Center the table horizontally */
+    max-width: 50%; /* Limit the table width */
+    border-collapse: collapse; /* Remove border spacing */
+    background-color: white;
+    overflow-x: auto;
 }
 
+#csvTable th,
+#csvTable td {
+    border: 1px solid #ccc; /* Light gray border for cells */
+    padding: 10px;
+    text-align: left;
+}
+
+#csvTable th:first-child,
+#csvTable td:first-child {
+    min-width: 150px; /* Minimum width for the first column (adjust as needed) */
+    width: 150px; /* Fixed width for the first column */
+}
+
+#csvTable th:nth-child(2),
+#csvTable td:nth-child(2) {
+    width: 60%; /* Set the width for the second column as a percentage (adjust as needed) */
+    white-space: nowrap; /* Prevent text from wrapping in the second column */
+    overflow: hidden; /* Hide overflow in the second column */
+    text-overflow: ellipsis; /* Add ellipsis (...) to indicate overflow */
+}
+
+#csvTable th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+/* Add a hover effect to the table rows */
+#csvTable tr:hover {
+    background-color: #f2f2f2; /* Light gray background on hover */
+}

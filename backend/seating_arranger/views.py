@@ -1,6 +1,6 @@
 
 import pandas as pd
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.http import Http404
 import numpy as np
 from django.shortcuts import render
@@ -10,10 +10,11 @@ from .models import RoomDetails,UploadedCSV
 from django.shortcuts import get_object_or_404, redirect
 
 
+
 def generate_seating_plan(request):
     if request.method == 'POST':
         roomno = request.POST.get('roomno')
-
+       
         # Fetch room details from the database
         try:
             room = RoomDetails.objects.get(roomno=roomno)
@@ -78,15 +79,12 @@ def generate_seating_plan(request):
 
             # Write DataFrame to Excel
             df.to_excel(response, index=False, header=False)
-
+            
             return response
     else:
-        return render(request, 'room_selection.html')
-
-
-
-
-
+        room_details = RoomDetails.objects.all()
+        return render(request, 'room_selection.html', {'room_details': room_details})
+        
 
 
 def generate_seating_plan2(request):
@@ -142,8 +140,9 @@ def generate_seating_plan2(request):
 
         return render(request, 'seating_plan.html', {'roomno': roomno, 'seating_plan': arr})
     else:
-        return render(request, 'room_selection2.html')
-
+        room_details = RoomDetails.objects.all()
+        return render(request, 'room_selection2.html', {'room_details': room_details})
+    
 def generate_seating_plan3(request):
     if request.method == 'POST':
         selected_rooms = request.POST.getlist('selected_rooms')

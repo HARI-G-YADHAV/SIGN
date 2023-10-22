@@ -12,8 +12,6 @@ else {
 
 }
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const csvFileInput = document.getElementById("csvFileInput");
     const csvTable = document.getElementById("csvTable");
@@ -40,10 +38,21 @@ document.addEventListener("DOMContentLoaded", function () {
         lines.forEach((line, index) => {
             const row = document.createElement(index === 0 ? "thead" : "tr");
             const cells = line.split(",");
-            cells.forEach((cell) => {
+            cells.forEach((cell, columnIndex) => {
                 const cellElement = index === 0 ? "th" : "td";
                 const cellNode = document.createElement(cellElement);
-                cellNode.textContent = cell;
+                if (index === 0) {
+                    // Set the column headers
+                    if (columnIndex === 0) {
+                        cellNode.textContent = "Status";
+                    } else if (columnIndex === 1) {
+                        cellNode.textContent = "Nominal Roll";
+                    } else {
+                        cellNode.textContent = cell;
+                    }
+                } else {
+                    cellNode.textContent = cell;
+                }
                 row.appendChild(cellNode);
             });
             table.appendChild(row);
@@ -57,6 +66,9 @@ document.addEventListener("DOMContentLoaded", function () {
         csvTable.appendChild(table);
     }
 });
+
+
+
 
 function uploadCsv() {
     const fileInput = document.getElementById('csvFileInput');

@@ -38,36 +38,71 @@
             background-color: #333;
             color: #fff;
         }
+        .print-button {
+            background-color: #333; /* Dark gray background */
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            margin-top: 50px;
+            transition: background-color 0.3s;
+            width: 200px;
+            height: 50px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 20px;
+        }
+
+        .print-button:hover {
+            background-color: #666; /* Slightly lighter gray on hover */
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <h1>Seating Arrangement</h1>
     <div class="container">
         {% for roomno, seating_plan in seating_arrangements.items %}
-        <div class="room-container">
+        <div class="room-container" id="room-container{{ roomno }}">
             <h2>Seating Plan for Room {{ roomno }}</h2>
             <pre>
                 <table>
                     <thead>
                         <tr>
                             <th>Row</th>
-                            <th>Student</th>
+                            <th colspan="{{ seating_plan.0.0|length }}">Student</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for row in seating_plan %}
-                            {% for col in row %}
+                            {% for r in row %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
-                                    <td>{{ col }}</td>
+                                    {% for student in r %}
+                                        <td>{{ student }}</td>
+                                    {% endfor %}
                                 </tr>
                             {% endfor %}
                         {% endfor %}
                     </tbody>
                 </table>
             </pre>
+            <button class="print-button" onclick="printDiv('room-container{{ roomno }}')">Print</button>
         </div>
         {% endfor %}
     </div>
+    <script>
+        function printDiv(divId) {
+            var printContents = document.getElementById(divId).innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
 </body>
 </html>

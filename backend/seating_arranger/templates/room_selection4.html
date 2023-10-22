@@ -52,6 +52,31 @@
             </div>
         </form>
     </div>
+    <div id="roomDetails" style="margin-top: 100px;">
+        <h2>Room Details</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Room Number</th>
+                    <th>Rows</th>
+                    <th>Columns</th>
+                    <th>No. of Benches</th>
+                    <th>Bench Strength</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for room in room_list %}
+                    <tr>
+                        <td>{{ room.roomno }}</td>
+                        <td>{{ room.rows }}</td>
+                        <td>{{ room.columns }}</td>
+                        <td>{{ room.noofbenches }}</td>
+                        <td>{{ room.benchstrength }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     <!-- Add Bootstrap JS and jQuery (for Bootstrap) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

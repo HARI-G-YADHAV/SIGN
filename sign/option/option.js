@@ -7,6 +7,10 @@
 document.getElementById("seatingArrangerButton").addEventListener("click", function() {
     window.location.href = "seating_arranger/home.html";
 });
+document.getElementById("adminButton").addEventListener("click", function() {
+    window.location.href = "http://127.0.0.1:8000/admin/";
+});
+
 
 // Get the token from localStorage
 const authToken = localStorage.getItem('token');

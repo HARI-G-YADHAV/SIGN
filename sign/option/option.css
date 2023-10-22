@@ -19,7 +19,7 @@ p {
 button {
     background-color: #007BFF;
     width: 200px;
-
+    border-radius: 5px;
     color: #fff;
     border: none;
     padding: 10px 20px;
