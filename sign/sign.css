@@ -8,6 +8,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-image: url(sign.jpg);
+    background-size: 2000px 1400px;
   }
   
   .container {

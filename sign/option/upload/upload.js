@@ -8,7 +8,7 @@ if (authToken) {
 } 
 else {
     console.log('Token not found in localStorage');
-    window.location.href="http://127.0.0.1:5500/sign/notfound.html";
+    window.location.href="http://127.0.0.1:5501/sign/notfound.html";
 
 }
 
@@ -34,32 +34,35 @@ document.addEventListener("DOMContentLoaded", function () {
     function parseCSV(csvData) {
         const lines = csvData.split("\n");
         const table = document.createElement("table");
-
+    
         lines.forEach((line, index) => {
-            const row = document.createElement(index === 0 ? "thead" : "tr");
-            const cells = line.split(",");
-            cells.forEach((cell, columnIndex) => {
-                const cellElement = index === 0 ? "th" : "td";
-                const cellNode = document.createElement(cellElement);
-                if (index === 0) {
-                    // Set the column headers
-                    if (columnIndex === 0) {
-                        cellNode.textContent = "Status";
-                    } else if (columnIndex === 1) {
-                        cellNode.textContent = "Nominal Roll";
+            if (line.trim() !== "") { // Check if the line is not empty
+                const row = document.createElement(index === 0 ? "thead" : "tr");
+                const cells = line.split(",");
+                cells.forEach((cell, columnIndex) => {
+                    const cellElement = index === 0 ? "th" : "td";
+                    const cellNode = document.createElement(cellElement);
+                    if (index === 0) {
+                        // Set the column headers
+                        if (columnIndex === 0) {
+                            cellNode.textContent = "Status";
+                        } else if (columnIndex === 1) {
+                            cellNode.textContent = "Nominal Roll";
+                        } else {
+                            cellNode.textContent = cell;
+                        }
                     } else {
                         cellNode.textContent = cell;
                     }
-                } else {
-                    cellNode.textContent = cell;
-                }
-                row.appendChild(cellNode);
-            });
-            table.appendChild(row);
+                    row.appendChild(cellNode);
+                });
+                table.appendChild(row);
+            }
         });
-
+    
         return table;
     }
+    
 
     function displayTable(table) {
         csvTable.innerHTML = "";
