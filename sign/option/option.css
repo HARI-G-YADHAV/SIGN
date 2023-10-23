@@ -66,4 +66,5 @@ button:hover {
 
 #logout-button:hover {
     background-color: #e6462a; /* Change the button color on hover */
+    transform: scale(1.1); 
 }

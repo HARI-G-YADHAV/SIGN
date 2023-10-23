@@ -180,6 +180,7 @@ def generate_seating_plan3(request):
                     if students_by_prefix[prefix]:
                         student = students_by_prefix[prefix].pop(0)
                         seatingPlan.append(student)
+            
 
             # Fill any remaining seats with 'XX'
             seatingPlan += ['XX' for _ in range(max_students - len(seatingPlan))]

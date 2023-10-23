@@ -14,24 +14,34 @@
             margin: 0;
             padding: 0;
             background-color: white;
+            background-image: url('exam hall.png'); /* Set the background image URL */
+            background-size: 2000px 1400px;
             
-
-
-            
-
         }
         header {
-            background-color: #333;
             color: #fff;
-            padding: 20px 0;
+            padding: 10px 0;
         }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         header h1 {
             font-size: 36px;
+            margin-left: 10px;
         }
+
+        .logout-button {
+            margin-right: 20px;
+        }
+
         main {
             margin: 20px;
             padding: 20px;
-            background-color: #dbdada;
+            background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             height: 630px;
@@ -41,21 +51,26 @@
         }
         main p {
             font-size: 30px;
-            color: #1b1b1b;
+            font-weight: bolder;
+            color: #000000;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
         main ul {
+            margin-top: 50px;
             text-align: left;
             margin-left: 30px;
             list-style-type: none; /* Remove bullet points from the list */
         }
         main h2 {
-            font-size: 24px; /* Increase the heading size */
+            font-size: 30px; /* Increase the heading size */
             color: #000000; /* Change the heading color */
         }
         main li {
             font-size: 16px;
             margin: 10px 0;
+            font-weight: bolder;
+            font-size: larger;
+            
         }
         main a {
             text-decoration: none;
@@ -66,30 +81,79 @@
             text-decoration: underline; /* Underline on hover */
             color: #0056b3;
         }
-        .admin-button {
-            display: inline-block;
-            padding: 20px 30px;
-            background-color: #007BFF;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 150px;
-            transition: background-color 0.3s;
-        }
-        .admin-button:hover {
-            background-color: #0056b3;
-            color: #fff;
-        }
-        footer {
-            background-color: #333;
+        .page-footer {
             color: #fff;
             padding: 10px 0;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
         }
+
+        .footer-content {
+            padding: 20px 0;
+        }
+
+        .page-footer p {
+            margin: 0;
+        }
+        .page-footer a {
+            text-decoration: none;
+            font-weight: bolder;
+            font-size:large;
+            color: #fff;
+            transition: color 0.3s;
+        }
+        .page-footer a:hover{
+            text-decoration:double;
+            font-size:20px;
+        }
+        #logout-button {
+            position: static;
+            width: 150px;
+            height: 50px;
+            background-color: #429cd4; /* You can change the button color */
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bolder;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin: auto;
+        }
+
+        #logout-button:hover {
+            background-color: #e6462a;
+            transform: scale(1.1);  
+        }
+         /* Add animations */
+         @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        main {
+            animation: fadeIn 1s ease;
+        }
+
+        #logout-button {
+            animation: fadeIn 1s ease; 
+        }
+        h1{
+            animation: fadeIn 1s ease; 
+        }
+
     </style>
 </head>
 <body>
     <header>
-        <h1>SeatESE</h1>
+        <div class="header-content">
+            <h1>SeatESE</h1>
+            <div class="logout-button">
+                <button id="logout-button">Logout</button>
+            </div>
+        </div>
     </header>
     <main>
         <p>SEATING ARRANGEMENT</p>
@@ -117,13 +181,29 @@
                 </a>
             </li>
         </ul>
-        
-        
-        <!-- Add the button to access the admin page -->
-        <a href="http://127.0.0.1:8000/admin/" class="admin-button">Admin Panel</a>
+        <script src="../../logout.js"></script>
     </main>
-    <footer>
-        <p>&copy; 2023 Your Website</p>
-    </footer>
+    <footer class="page-footer">
+        <div class="footer-content">
+            <a href="https://nasc.ac.in/"><p >&copy;nasc.ac.in</p></a>
+        </div>
+    </footer>    
+    <script>
+                // Get the token from localStorage
+        const authToken = localStorage.getItem('token');
+
+        // Check if the token exists
+        if (authToken) {
+            // You can now use authToken for your authentication or other purposes
+            console.log('Token:', authToken);
+
+        } 
+        else {
+            console.log('Token not found in localStorage');
+            window.location.href="../../notfound.html";
+
+        }
+
+    </script>
 </body>
 </html>

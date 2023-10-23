@@ -9,6 +9,7 @@ document.getElementById("seatingArrangerButton").addEventListener("click", funct
 });
 document.getElementById("adminButton").addEventListener("click", function() {
     window.location.href = "http://127.0.0.1:8000/admin/";
+    localStorage.removeItem('token');
 });
 
 

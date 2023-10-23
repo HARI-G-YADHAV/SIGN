@@ -39,27 +39,27 @@
             color: #fff;
         }
         .print-button {
-            background-color: #333; /* Dark gray background */
+            background-color: #000; /* Black background */
             color: #fff;
-            padding: 15px 30px;
+            padding: 15px 30px; /* Increase padding to make it larger */
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            display: block;
-            margin: 0 auto;
+            display: block; /* Make the button a block-level element */
+            margin: 0 auto; /* Center-align the button horizontally */
             margin-top: 50px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s; /* Smooth transition on hover */
             width: 200px;
             height: 50px;
-            font-size: 24px;
+            font-size:24px;
             font-weight: bold;
             text-align: center;
             line-height: 20px;
         }
 
         .print-button:hover {
-            background-color: #666; /* Slightly lighter gray on hover */
-            color: #fff;
+            background-color: rgb(205, 106, 26); /* Subtle blue background on hover */
+            color: #fff; /* White text color on hover */
         }
     </style>
 </head>
@@ -91,8 +91,8 @@
                     </tbody>
                 </table>
             </pre>
-            <button class="print-button" onclick="printDiv('room-container{{ roomno }}')">Print</button>
         </div>
+        <button class="print-button" onclick="printDiv('room-container{{ roomno }}')">Print</button>
         {% endfor %}
     </div>
     <script>

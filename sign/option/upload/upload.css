@@ -9,27 +9,29 @@ body {
 
 /* Header styles */
 .container1 {
-
-    padding: 10px;
     color: white;
     text-align: right;
 }
 
 #logout-button {
+    position: static;
     width: 150px;
     height: 50px;
-    background-color: #1e8ddd; /* Logout button color */
+    margin-right: 50px;
+    margin-top: 30px;
+    background-color: #429cd4; /* You can change the button color */
     color: white;
     border: none;
     cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: bolder;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 #logout-button:hover {
-    background-color: #e6462a; /* Change button color on hover */
+    background-color: #e6462a;
+    transform: scale(1.1);  /* Change button color on hover */
 }
 
 /* Page title styles */
