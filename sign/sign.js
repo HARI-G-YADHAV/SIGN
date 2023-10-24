@@ -36,11 +36,14 @@ function signIn() {
       console.log(data);
       const message = data.message;
       const is_admin = data.is_admin;
+      const is_staff = data.is_staff; // Check if the user is verified
+   
       localStorage.setItem("token", data.token);
       // Update the content of the placeholder element
       const messagePlaceholder = document.getElementById('messagePlaceholder');
       messagePlaceholder.textContent = message;
-      if (data.token) {
+   
+      if (data.token && is_staff) {
         if (is_admin) {
           // Redirect admin to an admin-specific page
           console.log('Redirecting to admin page');
@@ -51,9 +54,9 @@ function signIn() {
           window.location.href = 'option/seating_arranger/home.html';
         }
       } else {
-        console.error('Authentication failed:', data);
+        console.error('Authentication failed or user is not verified by the admin:', data);
       }
-    })
+   })
     .catch(error => {
       // Handle any errors
       console.error(error);
@@ -63,13 +66,15 @@ function signIn() {
 function signUp() {
     var username = document.getElementById('username').value;
     var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
+    var password1 = document.getElementById('password1').value;
+    var password2 = document.getElementById('password2').value;
 
     // Create the JSON payload
     var jsonData = {
       username: username,
       email: email,
-      password: password
+      password1: password1,
+      password2:password2,
     };
 
     // Make the API request to the Django backend

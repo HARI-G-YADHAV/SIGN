@@ -71,7 +71,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 CORS_ALLOWED_ORIGINS = [
-    'http://127.0.0.1:5500',  # Add your front-end URL here
+    'http://127.0.0.1:5501',  # Add your front-end URL here
 ]
 CORS_ALLOW_ALL_ORIGINS = True 
 

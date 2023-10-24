@@ -8,3 +8,5 @@ class RoomDetails(admin.ModelAdmin):
     list_display = ('rows', 'columns','roomno','noofbenches','benchstrength')
 
 
+
+

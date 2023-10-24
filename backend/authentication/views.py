@@ -23,14 +23,15 @@ def sign_up(request):
             return JsonResponse({'error': 'Invalid JSON data'}, status=400)
 
         email = data.get('email')
-        password = data.get('password')
+        password1 = data.get('password1')
         username = data.get('username')
-
-        if not email or not password or not username:
+        password2 = data.get('password2')
+        if password1 != password2:
+            return JsonResponse({'success': False, 'message': 'Password incorrect'}, status=400)
+        if not email or not password1 or not username:
             return JsonResponse({'error': 'Missing required fields'}, status=400)
-
         try:
-            user = User.objects.create_user(email=email, password=password, username=username)
+            user = User.objects.create_user(email=email, password=password1, username=username)
             return JsonResponse({'message': 'User created successfully', 'user_id': user.id}, status=201)
         except IntegrityError as e:
             return JsonResponse({'success': False, 'message': 'Username already exists'}, status=400)
@@ -59,7 +60,12 @@ def sign_in(request):
             login(request, user)
             token, created = Token.objects.get_or_create(user=user)
             is_admin = user.is_superuser
-            return JsonResponse({'token': token.key, 'user_id': user.id, 'message': '','is_admin': is_admin,}, status=200)
+            is_staff = user.is_staff
+            if user.is_staff:
+                message = ''
+            else:
+                message = 'user is not verified.'
+            return JsonResponse({'token': token.key, 'user_id': user.id, 'message': message,'is_admin': is_admin,'is_staff': is_staff}, status=200)
         else:
             return JsonResponse({'message': 'Invalid email or password'}, status=401)
     else:
