@@ -106,11 +106,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for roomno, prefix, count in prefix_counts %}
-                        <tr>
-                            <td>{{ prefix }}</td>
-                            <td>{{ count }}</td>
-                        </tr>
+                    {% for room, prefix, count in prefix_counts %}
+                        {% if room == roomno %}
+                            <tr>
+                                <td>{{ prefix }}</td>
+                                <td>{{ count }}</td>
+                            </tr>
+                        {% endif %}
                     {% endfor %}
                 </tbody>
             </table>

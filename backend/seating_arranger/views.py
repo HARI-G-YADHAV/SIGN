@@ -190,11 +190,11 @@ def generate_seating_plan3(request):
             seating_arrangements[roomno] = arr
 
             # Calculate student counts by prefix
-            room_counts = {}
+            room_counts = {}  # Dictionary to store prefix counts for each room
 
             for roomno in selected_rooms:
                 if roomno in seating_arrangements:
-                    room_counts[roomno] = {}
+                    room_counts[roomno] = {}  # Initialize a dictionary for each room
                     for row in seating_arrangements[roomno][0]:
                         for r in row:
                             prefix = r[:8]
@@ -203,9 +203,15 @@ def generate_seating_plan3(request):
                             else:
                                 room_counts[roomno][prefix] = 1
 
+            # Now, room_counts is a dictionary where keys are room numbers (roomno) and values are dictionaries
+            # representing prefix counts for each room.
 
-            # Create a flat list of tuples (roomno, prefix, count)
-            prefix_counts = [(roomno, prefix, count) for roomno, prefix_count in room_counts.items() for prefix, count in prefix_count.items()]
+            # To create a flat list of tuples (roomno, prefix, count) for each room, you can use a nested loop:
+            prefix_counts = []
+
+            for roomno, prefix_count in room_counts.items():
+                for prefix, count in prefix_count.items():
+                    prefix_counts.append((roomno, prefix, count))
         return render(request, 'seating_plan2.html', {'seating_arrangements': seating_arrangements, 'prefix_counts': prefix_counts})
     else:
         room_list = RoomDetails.objects.all()
