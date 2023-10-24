@@ -149,7 +149,8 @@ def generate_seating_plan3(request):
         seating_arrangements = {}  # Dictionary to store seating arrangements for each room
 
         total_students = list(UploadedCSV.objects.values_list('RegNo', flat=True).distinct())
-       
+
+        prefix_counts = {}  # Dictionary to store student counts by prefix
 
         for roomno in selected_rooms:
             room = RoomDetails.objects.get(roomno=roomno)
@@ -160,7 +161,6 @@ def generate_seating_plan3(request):
             # Distribute students to rooms
             current_room_students = total_students[:max_students]
             total_students = total_students[max_students:]
-
 
             seatingPlan = []
 
@@ -180,7 +180,6 @@ def generate_seating_plan3(request):
                     if students_by_prefix[prefix]:
                         student = students_by_prefix[prefix].pop(0)
                         seatingPlan.append(student)
-            
 
             # Fill any remaining seats with 'XX'
             seatingPlan += ['XX' for _ in range(max_students - len(seatingPlan))]
@@ -190,7 +189,24 @@ def generate_seating_plan3(request):
 
             seating_arrangements[roomno] = arr
 
-        return render(request, 'seating_plan2.html', {'seating_arrangements': seating_arrangements})
+            # Calculate student counts by prefix
+            room_counts = {}
+
+            for roomno in selected_rooms:
+                if roomno in seating_arrangements:
+                    room_counts[roomno] = {}
+                    for row in seating_arrangements[roomno][0]:
+                        for r in row:
+                            prefix = r[:8]
+                            if prefix in room_counts[roomno]:
+                                room_counts[roomno][prefix] += 1
+                            else:
+                                room_counts[roomno][prefix] = 1
+
+
+            # Create a flat list of tuples (roomno, prefix, count)
+            prefix_counts = [(roomno, prefix, count) for roomno, prefix_count in room_counts.items() for prefix, count in prefix_count.items()]
+        return render(request, 'seating_plan2.html', {'seating_arrangements': seating_arrangements, 'prefix_counts': prefix_counts})
     else:
         room_list = RoomDetails.objects.all()
         return render(request, 'room_selection3.html', {'room_list': room_list})

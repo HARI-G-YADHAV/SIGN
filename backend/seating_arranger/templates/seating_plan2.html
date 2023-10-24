@@ -48,6 +48,7 @@
             display: block; /* Make the button a block-level element */
             margin: 0 auto; /* Center-align the button horizontally */
             margin-top: 50px;
+            margin-bottom: 50px;
             transition: background-color 0.3s; /* Smooth transition on hover */
             width: 200px;
             height: 50px;
@@ -93,8 +94,30 @@
             </pre>
         </div>
         <button class="print-button" onclick="printDiv('room-container{{ roomno }}')">Print</button>
-        {% endfor %}
     </div>
+    <div class="room-container" id="count-container{{ roomno }}">
+        <h2>Student Counts for Room {{ roomno }}</h2>
+        <pre>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for roomno, prefix, count in prefix_counts %}
+                        <tr>
+                            <td>{{ prefix }}</td>
+                            <td>{{ count }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </pre>
+    </div>
+    <button class="print-button" onclick="printDiv('count-container{{ roomno }}')">Print</button>
+    {% endfor %}
     <script>
         function printDiv(divId) {
             var printContents = document.getElementById(divId).innerHTML;
