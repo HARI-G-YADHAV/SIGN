@@ -83,14 +83,16 @@ def generate_seating_plan(request):
             return response
     else:
         room_details = RoomDetails.objects.all()
-        return render(request, 'room_selection.html', {'room_details': room_details})
+        student_count = UploadedCSV.objects.count()
+        for room in room_details:
+            room.strength = room.rows * room.columns
+        return render(request, 'room_selection2.html', {'room_details': room_details,'student_count': student_count})
         
 
 
 def generate_seating_plan2(request):
     if request.method == 'POST':
         roomno = request.POST.get('roomno')
-
         # Fetch room details from the database
         try:
             room = RoomDetails.objects.get(roomno=roomno)
@@ -141,7 +143,10 @@ def generate_seating_plan2(request):
         return render(request, 'seating_plan.html', {'roomno': roomno, 'seating_plan': arr})
     else:
         room_details = RoomDetails.objects.all()
-        return render(request, 'room_selection2.html', {'room_details': room_details})
+        student_count = UploadedCSV.objects.count()
+        for room in room_details:
+            room.strength = room.rows * room.columns
+        return render(request, 'room_selection2.html', {'room_details': room_details,'student_count': student_count})
     
 def generate_seating_plan3(request):
     if request.method == 'POST':
@@ -215,7 +220,10 @@ def generate_seating_plan3(request):
         return render(request, 'seating_plan2.html', {'seating_arrangements': seating_arrangements, 'prefix_counts': prefix_counts})
     else:
         room_list = RoomDetails.objects.all()
-        return render(request, 'room_selection3.html', {'room_list': room_list})
+        student_count = UploadedCSV.objects.count()
+        for room in room_list:
+            room.strength = room.rows * room.columns
+        return render(request, 'room_selection3.html', {'room_list': room_list,'student_count': student_count})
 
 def generate_seating_plan4(request):
     if request.method == 'POST':
@@ -280,4 +288,7 @@ def generate_seating_plan4(request):
         return response
     else:
         room_list = RoomDetails.objects.all()
-        return render(request, 'room_selection4.html', {'room_list': room_list})
+        student_count = UploadedCSV.objects.count()
+        for room in room_list:
+            room.strength = room.rows * room.columns
+        return render(request, 'room_selection3.html', {'room_list': room_list,'student_count': student_count})

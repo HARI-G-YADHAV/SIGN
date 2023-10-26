@@ -48,6 +48,9 @@
             </div>
         </form>
     </div>
+    <div id="studentCount" style="margin-top: 20px;">
+        <h2>Number of Students:{{ student_count }}</h2>
+    </div>
     <div id="roomDetails" style="margin-top: 100px;">
         <h2>Room Details</h2>
         <table class="table table-bordered">
@@ -58,6 +61,7 @@
                     <th>Columns</th>
                     <th>No. of Benches</th>
                     <th>Bench Strength</th>
+                    <th>Strength</th>
                 </tr>
             </thead>
             <tbody>
@@ -68,6 +72,7 @@
                         <td>{{ room.columns }}</td>
                         <td>{{ room.noofbenches }}</td>
                         <td>{{ room.benchstrength }}</td>
+                        <td>{{ room.strength }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
